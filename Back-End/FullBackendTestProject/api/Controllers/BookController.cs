@@ -41,9 +41,11 @@ public class BookController : ControllerBase
 
     [HttpDelete]
     [Route("/api/book/{bookId}")]
-    public object DeleteBook([FromRoute] int bookId)
+    public IActionResult  DeleteBook([FromRoute] int bookId)
     {
-        throw new NotImplementedException();
+        _service.DeleteBox(bookId);
+        
+        return NoContent();
     }
 
 

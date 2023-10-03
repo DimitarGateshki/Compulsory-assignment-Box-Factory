@@ -36,4 +36,14 @@ public class Service
         }
     }
 
+    public void DeleteBox(int boxId)
+    {
+        var result = _repository.DeleteBox(boxId);
+        if (!result)
+        {
+            throw new Exception("Could not delete that box!");
+        }
+        
+    }
+
 }
