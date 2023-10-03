@@ -13,19 +13,26 @@ public class Repository
         _dataSource = dataSource;
     }
 
-    public IEnumerable<Book> GetAllBooks()
+    public IEnumerable<Box> GetAllBoxes()
     {
-        var sql = $@"select * from library.books;";
+        var sql = $@"select * from public.boxes;";
         using(var conn = _dataSource.OpenConnection())
         {
-            return conn.Query<Book>(sql);
+            return conn.Query<Box>(sql);
         }
     }
 
 
-    public Book CreateBook(string title, string publisher, string coverImgUrl)
-    {
-        throw new NotImplementedException();
+    public Box CreateBox(string name, DateOnly date, string category)
+    { 
+        var sql = $@"INSERT INTO public.boxes (name, date_of_creation, category)
+           VALUES (@name, @date, @category)";
+        
+        using(var conn = _dataSource.OpenConnection())
+        {
+            return conn.QueryFirst<Box>(sql, new { name, date, category});
+            
+        }
     }
 
 
