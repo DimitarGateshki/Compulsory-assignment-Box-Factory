@@ -12,21 +12,38 @@ public class Service
         _repository = repository;
     }
 
-    public IEnumerable<Book> GetAllBooks()
+    public IEnumerable<Box> GetAllBoxes()
     {
         try
         {
-            return _repository.GetAllBooks();
+            return _repository.GetAllBoxes();
         }
         catch (Exception)
         {
-            throw new Exception("Could not get books");
+            throw new Exception("Could not get boxes");
         }
     }
 
-    public Book CreateBook(string title, string publisher, string coverImgUrl)
+    public Box CreateBox(string name, DateTime DateOfCreation, string category)
     {
-        throw new NotImplementedException();
+        try
+        {
+           return _repository.CreateBox(name, DateOfCreation, category);
+        }
+        catch (Exception )
+        {
+            throw new Exception("Could not create the box!");
+        }
+    }
+
+    public void DeleteBox(int boxId)
+    {
+        var result = _repository.DeleteBox(boxId);
+        if (!result)
+        {
+            throw new Exception("Could not delete that box!");
+        }
+        
     }
 
 }

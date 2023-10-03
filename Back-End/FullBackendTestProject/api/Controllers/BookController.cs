@@ -2,7 +2,8 @@ using infrastructure.DataModels;
 using Microsoft.AspNetCore.Mvc;
 using service;
 
-namespace FullBackendTestProject.Controllers;
+
+namespace api.Controllers;
 
 [ApiController]
 public class BookController : ControllerBase
@@ -14,32 +15,37 @@ public class BookController : ControllerBase
         _service = service;
     }
 
+    
     [HttpGet]
-    [Route("/api/books")]
-    public IEnumerable<Book> GetBooks()
+    [Route("/api/boxes")]
+    public IEnumerable<Box> GetAllBoxes()
     {
-        return _service.GetAllBooks();
+        return _service.GetAllBoxes();
     }
+    
 
     [HttpPost]
-    [Route("/api/book")]
-    public Book PostBook([FromBody]Book book)
+    [Route("/api/newBox")]
+    public Box PostBox([FromBody]Box box)
     {
-        throw new NotImplementedException();
+        return _service.CreateBox(box.Name, box.DateOfCreation, box.Category);
+
     }
 
     [HttpPut]
     [Route("/api/book/{bookId}")]
-    public Book UpdateBook([FromBody] Book book, [FromRoute] int bookId)
+    public Box UpdateBook([FromBody] Box box, [FromRoute] int bookId)
     {
         throw new NotImplementedException();
     }
 
     [HttpDelete]
     [Route("/api/book/{bookId}")]
-    public object DeleteBook([FromRoute] int bookId)
+    public IActionResult  DeleteBook([FromRoute] int bookId)
     {
-        throw new NotImplementedException();
+        _service.DeleteBox(bookId);
+        
+        return NoContent();
     }
 
 
