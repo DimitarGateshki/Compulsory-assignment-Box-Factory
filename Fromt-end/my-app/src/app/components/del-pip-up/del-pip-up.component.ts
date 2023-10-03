@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./del-pip-up.component.css']
 })
 export class DelPipUpComponent {
+  closeDel(){
+    window.location.reload()
 
+  }
 }

@@ -76,9 +76,13 @@ body {
 }
 
 .boxes{
+  margin-top: 50px;
   display: grid;
-  column-gap: 50px;
   row-gap: 50px;
+  grid-template-columns: auto auto auto;
+}
 
+.box{
+  display: inline;
 }
 

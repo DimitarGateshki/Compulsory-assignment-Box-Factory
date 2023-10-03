@@ -12,13 +12,7 @@ export class CreatePopUpComponent {
     window.location.reload()
 
   }
-  closeEdit(){
-    window.location.reload()
 
-  }
-  closeDel(){
-    window.location.reload()
 
-  }
 
 }

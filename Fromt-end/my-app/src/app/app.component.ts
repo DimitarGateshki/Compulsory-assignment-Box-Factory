@@ -7,14 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  boxes: any[]=[1,2,3,4,5,6,7,8];
+
   constructor(){
 
   }
   title = 'my-app';
 
-  delToken: boolean =false;
   createToken: boolean =false;
-  editToken: boolean =false;
 
 
   showCreate(){
@@ -26,20 +26,6 @@ export class AppComponent {
     this.createToken=false;
   }
 
-  showEdit(){
-    this.editToken=true;
-  }
 
-  hideEdit(){
-    this.editToken=false;
-  }
-
-  showDel(){
-    this.delToken=true;
-  }
-
-  hideDel(){
-    this.delToken=false;
-  }
 
 }
