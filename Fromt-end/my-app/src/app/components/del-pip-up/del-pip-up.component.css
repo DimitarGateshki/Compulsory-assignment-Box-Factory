@@ -1,10 +1,12 @@
 .pop-up {
   width: 860px;
-  height: 440px;
+  height: 250px;
   justify-self: center;
   align-self: center;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
 }
 
 .title {
@@ -59,4 +61,17 @@
   justify-content: center;
   align-items: center;
   gap: 20%;
+}
+
+.pop-up-create{
+  margin-top: -100%;
+  padding-top: 40%;
+  margin-left: -7%;
+  position: absolute;
+  width: 110%;
+  height: 200%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }

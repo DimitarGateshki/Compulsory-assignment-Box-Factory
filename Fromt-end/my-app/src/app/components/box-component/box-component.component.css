@@ -47,3 +47,16 @@
 .remove{
   background-color: #C70039;
 }
+
+.pop-up-del, .pop-up-edit{
+  margin-top: -65%;
+  padding-top: 40%;
+  margin-left: -7%;
+  position: absolute;
+  width: 110%;
+  height: 200%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}

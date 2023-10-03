@@ -5,6 +5,8 @@
   align-self: center;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
 }
 
 .title {
