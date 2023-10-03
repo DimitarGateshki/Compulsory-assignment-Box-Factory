@@ -25,9 +25,8 @@ public class BookController : ControllerBase
     
 
     [HttpPost]
-
-    [Route("/api/newBook")]
-    public Box PostBook([FromBody]Box box)
+    [Route("/api/newBox")]
+    public Box PostBox([FromBody]Box box)
     {
         return _service.CreateBox(box.Name, box.DateOfCreation, box.Category);
 

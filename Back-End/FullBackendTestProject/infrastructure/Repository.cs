@@ -23,15 +23,17 @@ public class Repository
     }
 
 
-    public Box CreateBox(string name, DateOnly date, string category)
-    { 
-        var sql = $@"INSERT INTO public.boxes (name, date_of_creation, category)
-           VALUES (@name, @date, @category)";
-        
-        using(var conn = _dataSource.OpenConnection())
+    public Box CreateBox(string name, DateTime date, string category)
+    {
+        var sql = @"INSERT INTO public.boxes (name, date_of_creation, category)
+                VALUES (@name, @date, @category)
+                RETURNING *";
+
+        using (var conn = _dataSource.OpenConnection())
         {
-            return conn.QueryFirst<Box>(sql, new { name, date, category});
+            var parameters = new { name = name, date = date, category = category };
             
+            return conn.QueryFirstOrDefault<Box>(sql, parameters);
         }
     }
 

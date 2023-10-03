@@ -24,7 +24,7 @@ public class Service
         }
     }
 
-    public Box CreateBox(string name, DateOnly DateOfCreation, string category)
+    public Box CreateBox(string name, DateTime DateOfCreation, string category)
     {
         try
         {
