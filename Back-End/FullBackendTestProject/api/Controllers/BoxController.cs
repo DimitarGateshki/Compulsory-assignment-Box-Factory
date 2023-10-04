@@ -6,11 +6,11 @@ using service;
 namespace api.Controllers;
 
 [ApiController]
-public class BookController : ControllerBase
+public class BoxController : ControllerBase
 {
     private readonly Service _service;
 
-    public BookController(Service service)
+    public BoxController(Service service)
     {
         _service = service;
     }
@@ -25,7 +25,7 @@ public class BookController : ControllerBase
     
 
     [HttpPost]
-    [Route("/api/newBox")]
+    [Route("/api/NewBox")]
     public Box PostBox([FromBody]Box box)
     {
         return _service.CreateBox(box.Name, box.DateOfCreation, box.Category);
@@ -33,14 +33,14 @@ public class BookController : ControllerBase
     }
 
     [HttpPut]
-    [Route("/api/book/{boxId}")]
+    [Route("/api/UpdateBox/{boxId}")]
     public Box UpdateBox([FromBody] Box box, [FromRoute] int boxId)
     {
         return _service.UpdateBox(box.Id,box.Name, box.DateOfCreation, box.Category);
     }
 
     [HttpDelete]
-    [Route("/api/book/{bookId}")]
+    [Route("/api/DeleteBox/{bookId}")]
     public IActionResult  DeleteBook([FromRoute] int bookId)
     {
         _service.DeleteBox(bookId);

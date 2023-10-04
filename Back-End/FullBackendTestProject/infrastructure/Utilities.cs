@@ -15,22 +15,7 @@ public static class Utilities
         rawConnectionString = Environment.GetEnvironmentVariable(envVarKeyName)!;
         if (rawConnectionString == null)
         {
-            throw new Exception($@"
-🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨
-YOUR CONN STRING {envVarKeyName} IS EMPTY.
-Solution: If you run terminal INSIDE Rider, go to settings, go to Tools -> Terminal and insert the {envVarKeyName}
-environment variable from here.
-If you're running from Git Bash OUTSIDE your IDE, go to the .bash_profile file in your home directory, and add the line
-
-export {envVarKeyName}=YOUR CONNECTION STRING HERE
-
-If you use zsh (like Mac users), add the above line in the .zshrc file in your home directory.
-
-Don't forget to close down the terminal after setting environment variable and starting a new one.
-
-Best regards, Alex
-🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨
-");
+            throw new Exception("There is problem with your pgconn!");
         }
 
         try
@@ -47,14 +32,7 @@ Best regards, Alex
         }
         catch (Exception e)
         {
-            throw new Exception($@"
-🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨
-Your connection string is found, but could not be used. Are you sure you correctly inserted
-the connection-string to Postgres?
-
-Best regards, Alex
-(Below is the inner exception)
-🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨🧨", e);
+            throw new Exception("Your connection cannot be found or used. Are you sure you are using PosgradeSQl", e);
         }
     }
 
