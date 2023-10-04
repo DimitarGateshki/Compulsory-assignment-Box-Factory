@@ -36,6 +36,11 @@ public class Service
         }
     }
 
+    public Box UpdateBox( int id,string name, DateTime date, string category)
+    {
+        return _repository.UpdateBox(id ,name, date, category);
+    }
+
     public void DeleteBox(int boxId)
     {
         var result = _repository.DeleteBox(boxId);

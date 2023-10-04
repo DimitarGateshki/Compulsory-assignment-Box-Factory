@@ -33,10 +33,10 @@ public class BookController : ControllerBase
     }
 
     [HttpPut]
-    [Route("/api/book/{bookId}")]
-    public Box UpdateBook([FromBody] Box box, [FromRoute] int bookId)
+    [Route("/api/book/{boxId}")]
+    public Box UpdateBox([FromBody] Box box, [FromRoute] int boxId)
     {
-        throw new NotImplementedException();
+        return _service.UpdateBox(box.Id,box.Name, box.DateOfCreation, box.Category);
     }
 
     [HttpDelete]
@@ -44,7 +44,6 @@ public class BookController : ControllerBase
     public IActionResult  DeleteBook([FromRoute] int bookId)
     {
         _service.DeleteBox(bookId);
-        
         return NoContent();
     }
 
