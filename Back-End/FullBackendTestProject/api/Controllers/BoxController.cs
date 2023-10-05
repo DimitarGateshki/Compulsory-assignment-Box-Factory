@@ -1,4 +1,5 @@
 using infrastructure.DataModels;
+using infrastructure.TranferModels;
 using Microsoft.AspNetCore.Mvc;
 using service;
 
@@ -18,34 +19,51 @@ public class BoxController : ControllerBase
     
     [HttpGet]
     [Route("/api/boxes")]
-    public IEnumerable<Box> GetAllBoxes()
+    public ResponseDto GetAllBoxes()
     {
-        return _service.GetAllBoxes();
+
+        return new ResponseDto()
+        {
+            MessageToClient = "Here are all the books!",
+            ResponseData = _service.GetAllBoxes(),
+        };
     }
     
 
     [HttpPost]
     [Route("/api/NewBox")]
-    public Box PostBox([FromBody]Box box)
+    public ResponseDto PostBox([FromBody]Box box)
     {
-        return _service.CreateBox(box.Name, box.DateOfCreation, box.Category);
+        return new ResponseDto()
+        {
+            MessageToClient = "Successfully created a box!",
+            ResponseData = _service.CreateBox(box.Name, box.DateOfCreation, box.Category),
+        };
 
     }
 
     [HttpPut]
     [Route("/api/UpdateBox/{boxId}")]
-    public Box UpdateBox([FromBody] Box box, [FromRoute] int boxId)
+    public ResponseDto UpdateBox([FromBody] Box box, [FromRoute] int boxId)
     {
-        return _service.UpdateBox(box.Id,box.Name, box.DateOfCreation, box.Category);
+        return new ResponseDto
+        {
+            MessageToClient = "Successfully updated the box: " + box.Name + "!",
+            ResponseData = _service.UpdateBox(box.Id, box.Name, box.DateOfCreation, box.Category),
+        };
     }
 
     [HttpDelete]
     [Route("/api/DeleteBox/{bookId}")]
-    public IActionResult  DeleteBook([FromRoute] int bookId)
+    public ResponseDto  DeleteBook([FromRoute] int bookId)
     {
         _service.DeleteBox(bookId);
-        return NoContent();
+        return new ResponseDto()
+        {
+            MessageToClient = "Successfully deleted the box",
+        };
+
     }
-
-
 }
+
+

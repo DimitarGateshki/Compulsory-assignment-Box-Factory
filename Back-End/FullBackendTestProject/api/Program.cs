@@ -1,3 +1,4 @@
+using api.Middleware;
 using infrastructure;
 using service;
 
@@ -13,4 +14,5 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.MapControllers();
+app.UseMiddleware<GlobalExceptionHandler>();
 app.Run();
