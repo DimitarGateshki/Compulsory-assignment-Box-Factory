@@ -1,3 +1,4 @@
+using api.Filters;
 using infrastructure.DataModels;
 using infrastructure.TranferModels;
 using Microsoft.AspNetCore.Mvc;
@@ -29,32 +30,35 @@ public class BoxController : ControllerBase
         };
     }
     
+    
+    
 
     [HttpPost]
+    [ValidateModel]
     [Route("/api/NewBox")]
-    public ResponseDto PostBox([FromBody]Box box)
+    public ResponseDto PostBox([FromBody] CreateBoxRequestDto dto)
     {
         return new ResponseDto()
         {
             MessageToClient = "Successfully created a box!",
-            ResponseData = _service.CreateBox(box.Name, box.DateOfCreation, box.Category),
+            ResponseData = _service.CreateBox(dto.BoxName, dto.DateOfCreation, dto.BoxCategory),
         };
 
     }
 
     [HttpPut]
     [Route("/api/UpdateBox/{boxId}")]
-    public ResponseDto UpdateBox([FromBody] Box box, [FromRoute] int boxId)
+    public ResponseDto UpdateBox([FromBody] UpdateBoxRequestDto dto, [FromRoute] int boxId)
     {
         return new ResponseDto
         {
-            MessageToClient = "Successfully updated the box: " + box.Name + "!",
-            ResponseData = _service.UpdateBox(box.Id, box.Name, box.DateOfCreation, box.Category),
+            MessageToClient = "Successfully updated the box: " + dto.BoxName + "!",
+            ResponseData = _service.UpdateBox(dto.BoxID, dto.BoxName, dto.DateOfCreation, dto.BoxCategory),
         };
     }
 
     [HttpDelete]
-    [Route("/api/DeleteBox/{bookId}")]
+    [Route("/api/DeleteBox/{bookId}")] 
     public ResponseDto  DeleteBook([FromRoute] int bookId)
     {
         _service.DeleteBox(bookId);
