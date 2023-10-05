@@ -19,6 +19,7 @@ public class BoxController : ControllerBase
 
     
     [HttpGet]
+    [ValidateModel]
     [Route("/api/boxes")]
     public ResponseDto GetAllBoxes()
     {
@@ -29,8 +30,18 @@ public class BoxController : ControllerBase
             ResponseData = _service.GetAllBoxes(),
         };
     }
-    
-    
+
+    [HttpGet]
+    [ValidateModel]
+    [Route("/api/box/{boxId}")]
+    public ResponseDto GetBox([FromRoute] int boxId)
+    {
+        return new ResponseDto()
+        {
+            MessageToClient = "Here is the wanted box!",
+            ResponseData = _service.GetBox(boxId)
+        };
+    }
     
 
     [HttpPost]
@@ -47,6 +58,7 @@ public class BoxController : ControllerBase
     }
 
     [HttpPut]
+    [ValidateModel]
     [Route("/api/UpdateBox/{boxId}")]
     public ResponseDto UpdateBox([FromBody] UpdateBoxRequestDto dto, [FromRoute] int boxId)
     {
@@ -58,6 +70,7 @@ public class BoxController : ControllerBase
     }
 
     [HttpDelete]
+    [ValidateModel]
     [Route("/api/DeleteBox/{bookId}")] 
     public ResponseDto  DeleteBook([FromRoute] int bookId)
     {

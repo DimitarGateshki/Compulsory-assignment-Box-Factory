@@ -24,6 +24,18 @@ public class Service
         }
     }
 
+    public Box GetBox(int id)
+    {
+        try
+        {
+            return _repository.GetBoxByID(id);
+        }
+        catch
+        {
+            throw new Exception("Could not get the certain box!");
+        }
+    }
+
     public Box CreateBox(string name, DateTime DateOfCreation, string category)
     {
         try

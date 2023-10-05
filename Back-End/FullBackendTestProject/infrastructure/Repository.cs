@@ -22,6 +22,16 @@ public class Repository
         }
     }
 
+    public Box GetBoxByID(int id)
+    {
+        var sql = $@"select * from public.boxes where id=@id;";
+
+        using (var conn = _dataSource.OpenConnection())
+        {
+            return conn.QueryFirstOrDefault<Box>(sql, new {id});
+        }
+    }
+
 
     public Box CreateBox(string name, DateTime date, string category)
     {
