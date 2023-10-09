@@ -22,6 +22,28 @@ public class Repository
         }
     }
 
+    public Box GetBoxByID(int id)
+    {
+        var sql = $@"select * from public.boxes where id=@id;";
+
+        using (var conn = _dataSource.OpenConnection())
+        {
+            return conn.QueryFirstOrDefault<Box>(sql, new {id});
+        }
+    }
+    public IEnumerable<SearchBoxItem> SearchBoxes(string searchTerm, int pageSize)
+    {
+        var sql = @"SELECT id as BoxId, name as BoxName, category as BoxCategory
+                FROM public.boxes
+                WHERE LOWER(name) LIKE @searchTerm
+                LIMIT @pageSize;";
+
+        using (var conn = _dataSource.OpenConnection())
+        {
+            return conn.Query<SearchBoxItem>(sql, new { searchTerm = "%" + searchTerm.ToLower() + "%", pageSize });
+        }
+    }
+
 
     public Box CreateBox(string name, DateTime date, string category)
     {

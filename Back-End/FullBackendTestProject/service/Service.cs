@@ -24,6 +24,18 @@ public class Service
         }
     }
 
+    public Box GetBox(int id)
+    {
+        try
+        {
+            return _repository.GetBoxByID(id);
+        }
+        catch
+        {
+            throw new Exception("Could not get the certain box!");
+        }
+    }
+
     public Box CreateBox(string name, DateTime DateOfCreation, string category)
     {
         try
@@ -34,6 +46,11 @@ public class Service
         {
             throw new Exception("Could not create the box!");
         }
+    }
+
+    public IEnumerable<SearchBoxItem> SearchBoxItems(string searchTerm, int pageSize)
+    {
+        return _repository.SearchBoxes(searchTerm, pageSize);
     }
 
     public Box UpdateBox( int id,string name, DateTime date, string category)

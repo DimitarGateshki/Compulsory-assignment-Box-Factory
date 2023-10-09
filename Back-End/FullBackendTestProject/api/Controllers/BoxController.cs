@@ -1,4 +1,6 @@
+using api.Filters;
 using infrastructure.DataModels;
+using infrastructure.TranferModels;
 using Microsoft.AspNetCore.Mvc;
 using service;
 
@@ -17,35 +19,75 @@ public class BoxController : ControllerBase
 
     
     [HttpGet]
+    [ValidateModel]
     [Route("/api/boxes")]
-    public IEnumerable<Box> GetAllBoxes()
+    public ResponseDto GetAllBoxes()
     {
-        return _service.GetAllBoxes();
+
+        return new ResponseDto()
+        {
+            MessageToClient = "Here are all the books!",
+            ResponseData = _service.GetAllBoxes(),
+        };
+    }
+
+    [HttpGet]
+    [ValidateModel]
+    [Route("/api/box/{boxId}")]
+    public ResponseDto GetBox([FromRoute] int boxId)
+    {
+        return new ResponseDto()
+        {
+            MessageToClient = "Here is the wanted box!",
+            ResponseData = _service.GetBox(boxId)
+        };
+    }
+
+    [HttpGet]
+    [Route("/api/searchBox")]
+    public IEnumerable<SearchBoxItem> Get([FromQuery] BoxSearchRequestDto dto)
+    {
+        return _service.SearchBoxItems(dto.SearchTerm, dto.PageSize);
     }
     
 
     [HttpPost]
+    [ValidateModel]
     [Route("/api/NewBox")]
-    public Box PostBox([FromBody]Box box)
+    public ResponseDto PostBox([FromBody] CreateBoxRequestDto dto)
     {
-        return _service.CreateBox(box.Name, box.DateOfCreation, box.Category);
+        return new ResponseDto()
+        {
+            MessageToClient = "Successfully created a box!",
+            ResponseData = _service.CreateBox(dto.BoxName, dto.DateOfCreation, dto.BoxCategory),
+        };
 
     }
 
     [HttpPut]
+    [ValidateModel]
     [Route("/api/UpdateBox/{boxId}")]
-    public Box UpdateBox([FromBody] Box box, [FromRoute] int boxId)
+    public ResponseDto UpdateBox([FromBody] UpdateBoxRequestDto dto, [FromRoute] int boxId)
     {
-        return _service.UpdateBox(box.Id,box.Name, box.DateOfCreation, box.Category);
+        return new ResponseDto
+        {
+            MessageToClient = "Successfully updated the box: " + dto.BoxName + "!",
+            ResponseData = _service.UpdateBox(dto.BoxID, dto.BoxName, dto.DateOfCreation, dto.BoxCategory),
+        };
     }
 
     [HttpDelete]
-    [Route("/api/DeleteBox/{bookId}")]
-    public IActionResult  DeleteBook([FromRoute] int bookId)
+    [ValidateModel]
+    [Route("/api/DeleteBox/{bookId}")] 
+    public ResponseDto  DeleteBook([FromRoute] int bookId)
     {
         _service.DeleteBox(bookId);
-        return NoContent();
+        return new ResponseDto()
+        {
+            MessageToClient = "Successfully deleted the box",
+        };
+
     }
-
-
 }
+
+
