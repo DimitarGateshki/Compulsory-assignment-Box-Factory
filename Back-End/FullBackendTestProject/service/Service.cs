@@ -48,6 +48,11 @@ public class Service
         }
     }
 
+    public IEnumerable<SearchBoxItem> SearchBoxItems(string searchTerm, int pageSize)
+    {
+        return _repository.SearchBoxes(searchTerm, pageSize);
+    }
+
     public Box UpdateBox( int id,string name, DateTime date, string category)
     {
         return _repository.UpdateBox(id ,name, date, category);

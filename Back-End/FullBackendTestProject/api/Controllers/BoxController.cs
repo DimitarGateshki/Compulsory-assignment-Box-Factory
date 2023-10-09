@@ -42,6 +42,13 @@ public class BoxController : ControllerBase
             ResponseData = _service.GetBox(boxId)
         };
     }
+
+    [HttpGet]
+    [Route("/api/searchBox")]
+    public IEnumerable<SearchBoxItem> Get([FromQuery] BoxSearchRequestDto dto)
+    {
+        return _service.SearchBoxItems(dto.SearchTerm, dto.PageSize);
+    }
     
 
     [HttpPost]
