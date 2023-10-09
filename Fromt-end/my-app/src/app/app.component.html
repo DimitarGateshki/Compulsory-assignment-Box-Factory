@@ -13,7 +13,7 @@
 
   </div>
   <div class="button">
-    <div class="add-button">
+    <div class="add-button" (click)="showCreate()">
       Add new box
     </div>
   </div>
@@ -27,3 +27,19 @@
   <div class="catt">a</div>
 
 </div>
+
+<div class="boxes">
+  <div class="box" *ngFor="let i of boxes">
+    <app-box-component></app-box-component>
+  </div>
+
+</div>
+
+<div class="pop-up-create" *ngIf="createToken">
+  <app-create-pop-up></app-create-pop-up>
+</div>
+
+
+
+
+

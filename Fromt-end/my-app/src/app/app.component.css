@@ -74,3 +74,28 @@ body {
   font-weight: 600;
   line-height: normal;
 }
+
+.boxes{
+  margin-top: 50px;
+  display: grid;
+  row-gap: 50px;
+  grid-template-columns: auto auto auto;
+}
+
+.box{
+  display: inline;
+}
+
+
+.pop-up-create{
+  margin-top: -100%;
+  padding-top: 40%;
+  margin-left: -7%;
+  position: absolute;
+  width: 110%;
+  height: 200%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
