@@ -1,0 +1,74 @@
+.pop-up {
+  width: 860px;
+  height: 440px;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.title {
+  color: #020202;
+  text-align: center;
+  font-family: Inter;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  justify-content: center;
+  align-items: center;
+  gap: 55px;
+}
+
+input {
+  width: 344px;
+  height: 70px;
+  border-radius: 20px;
+  background: #fff5e0;
+  margin-left: 30%;
+  margin-bottom: 55px;
+  font-size: 40px;
+  padding: 10px;
+
+}
+
+.add {
+  width: 290px;
+  height: 79px;
+  background-color: #ff6969;
+  color: #f2f2f2;
+  text-align: center;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border-radius: 20px;
+  padding: 20px 0 0 0;
+}
+
+.cancel {
+  width: 290px;
+  height: 79px;
+  background-color: #c70039;
+  color: #f2f2f2;
+  text-align: center;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border-radius: 20px;
+  padding: 20px 0 0 0;
+
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20%;
+}
