@@ -10,7 +10,6 @@ public class Box
     
     [Required, MinLength(3), MaxLength(50)]
     public string Name { get; set; }
-    [Required, NotNull]
     public DateTime DateOfCreation { get; set; }
     [Required, MinLength(3), MaxLength(50)]
     public string Category { get; set; }
