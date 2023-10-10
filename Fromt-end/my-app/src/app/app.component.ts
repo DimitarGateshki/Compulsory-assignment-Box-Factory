@@ -20,15 +20,13 @@ export class AppComponent {
 
 
 
-<<<<<<< Updated upstream
-=======
+
   ngOnInit(): void {
     //this.backendService.gatAllBoxes().subscribe(data =>{
       //console.log(data);
    // })
 
   }
->>>>>>> Stashed changes
   showCreate(){
     this.createToken=true;
 
