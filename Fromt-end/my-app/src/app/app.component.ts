@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BackendService } from './backend.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -14,20 +16,22 @@ export class AppComponent {
 
   createToken: boolean =false;
 
-  constructor(){
+  constructor(
+    private backendService: BackendService,
+    private http:HttpClientModule){
 
   }
-
 
 
 
   ngOnInit(): void {
-    //this.backendService.gatAllBoxes().subscribe(data =>{
-      //console.log(data);
-   // })
+    this.backendService.gatAllBoxes().subscribe(data =>{
+      console.log(data);
+    })
 
   }
-  showCreate(){
+  showCreate(){ 
+
     this.createToken=true;
 
   }

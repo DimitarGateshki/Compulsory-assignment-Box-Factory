@@ -3,6 +3,7 @@ import { environment } from './enviroments';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -38,5 +39,10 @@ export class BackendService {
       BoxName: name,
       BoxCategory: category,
     });
+   
+  }
+
+
+
   }
 }
