@@ -11,7 +11,7 @@ export class BackendService {
   constructor(private http: HttpClient) {}
 
   gatAllBoxes(): Observable<any> {
-    const url = environment.backendapi + 'mobilepos/' ;
+    const url = environment.backendapi + '/api/boxes' ;
     return this.http.get<any>(url);
   }
 
