@@ -10,7 +10,6 @@ public class UpdateBoxRequestDto
     [Required, MinLength(3), MaxLength(50)]
     public string BoxName { get; set; }
     
-    [Required , NotNull]
     public DateTime DateOfCreation { get; set; }
     
     [Required, MinLength(3), MaxLength(50)]
