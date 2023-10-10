@@ -12,7 +12,7 @@ export class BackendService {
 
   gatAllBoxes(): Observable<any> {
     const url = environment.backendapi + '/api/boxes' ;
-    return this.http.get<any>(url);
+    return this.http.get<any[]>(url);
   }
 
   gatBoxByID( id: number): Observable<any> {
