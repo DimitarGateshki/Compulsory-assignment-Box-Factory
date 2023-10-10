@@ -13,19 +13,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-var app = builder.Build();
 
-var frontEndRelativePath = "../../Fromt-end/my-app/www/";
+var frontEndRelativePath = "../../../Fromt-end/my-app/www";
 
 builder.Services.AddSpaStaticFiles(
     configuration => { configuration.RootPath = frontEndRelativePath; });
+var app = builder.Build();
 
 
 app.UseSwagger();
 app.UseSwaggerUI();
 app.MapControllers();
 app.UseMiddleware<GlobalExceptionHandler>();
-app.UseCors(c => c.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
+//app.UseCors(c => c.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 
 app.UseSpaStaticFiles(new StaticFileOptions()
 {
@@ -37,8 +37,11 @@ app.UseSpaStaticFiles(new StaticFileOptions()
     }
 });
 
-app.Map(frontEndRelativePath,
-    (IApplicationBuilder frontendApp) => { frontendApp.UseSpa(spa => { spa.Options.SourcePath = "./app/www/"; }); });
+app.Map($"/{frontEndRelativePath}", (IApplicationBuilder frontendApp) => 
+{
+    frontendApp.UseSpa(spa => { spa.Options.SourcePath = "./app/www/"; });
+});
+
 
 
 app.UseSpa(conf =>
