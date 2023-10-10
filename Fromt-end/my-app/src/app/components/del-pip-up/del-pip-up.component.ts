@@ -19,7 +19,7 @@ export class DelPipUpComponent {
       console.log(e);
     })
 
-    this.closeDel();
+   // this.closeDel();
   }
 
   closeDel(){

@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent {
 
-  boxes: any[]=[1,2,3,4,5,6,7,8];
+  boxes: any[]=[];
   delToken: boolean =false;
   editToken: boolean =false;
   title = 'my-app';
@@ -26,6 +26,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.backendService.gatAllBoxes().subscribe(data =>{
+      this.boxes=data.responseData;
       console.log(data);
     })
 
@@ -57,28 +58,57 @@ export class AppComponent {
   selectCat(type: number){
     const sale = document.getElementById('sale');
     const sold = document.getElementById('sold');
+    const all = document.getElementById('all');
 
 
-    if(type==1){
 
-      if(sale && sold){
+    if(type==0){
+      if(sale && sold && all){
+        all.classList.add('selected-cat');
+        sale.classList.remove('selected-cat');
+        sold.classList.remove('selected-cat');
+        this.backendService.gatAllBoxes().subscribe(data =>{
+          this.boxes=data.responseData;
+          console.log(data);
+        })
+  
+        }
+
+    }else if(type==1){
+
+      if(sale && sold && all){
       sale.classList.add('selected-cat');
       sold.classList.remove('selected-cat');
+      all.classList.remove('selected-cat');
+
+      this.backendService.gatAllBoxes().subscribe(data =>{
+        this.boxes=data.responseData.filter((e:any)=>e.category=='for sale');
+        console.log(data);
+      })
 
       }
 
     }else{
 
-      if(sale && sold){
+      if(sale && sold && all){
         sale.classList.remove('selected-cat');
         sold.classList.add('selected-cat');
+        all.classList.remove('selected-cat');
 
+
+        this.backendService.gatAllBoxes().subscribe(data =>{
+          this.boxes=data.responseData.filter((e:any)=>e.category=='sold');
+          console.log(data);
+        })
         }
     }
   }
 
   sort(){
+    console.log(this.boxes)
 
+    this.boxes=this.boxes.sort((a, b) => (a.name < b.name ? -1 : 1))
+    console.log(this.boxes)
   }
 
 }

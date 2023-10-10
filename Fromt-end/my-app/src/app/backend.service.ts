@@ -20,7 +20,7 @@ export class BackendService {
     return this.http.get<any>(url);
   }
 
-  removeBoxByID(id: number): Observable<any> {
+  removeBoxByID(id: any): Observable<any> {
     const url = environment.backendapi + '/api/DeleteBox/' + id;
     return this.http.delete<any>(url);
   }
@@ -28,13 +28,14 @@ export class BackendService {
   editBoxByID(id: number, name: string, category: string): Observable<any> {
     const url = environment.backendapi + '/api/UpdateBox/' + id;
     return this.http.put<any>(url, {
+      boxID:id,
       BoxName: name,
       BoxCategory: category,
     });
   }
 
   createBox(name: string,  category: string): Observable<any> {
-    const url = environment.backendapi + '/api/NewBox"';
+    const url = environment.backendapi + '/api/NewBox';
     return this.http.post<any>(url, {
       BoxName: name,
       BoxCategory: category,
