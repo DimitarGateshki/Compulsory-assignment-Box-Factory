@@ -1,5 +1,6 @@
 using api.Middleware;
 using infrastructure;
+using Microsoft.Net.Http.Headers;
 using service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,13 +12,41 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSpaStaticFiles(conf => conf.RootPath = "../path to www directory");
 
+
+var frontEndRelativePath = "../../../Fromt-end/my-app/www";
+
+builder.Services.AddSpaStaticFiles(
+    configuration => { configuration.RootPath = frontEndRelativePath; });
 var app = builder.Build();
+
+
 app.UseSwagger();
 app.UseSwaggerUI();
 app.MapControllers();
 app.UseMiddleware<GlobalExceptionHandler>();
-app.UseSpaStaticFiles();
-app.UseSpa(conf => conf.Options.SourcePath = "../path to www directory");
+//app.UseCors(c => c.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
+
+app.UseSpaStaticFiles(new StaticFileOptions()
+{
+    OnPrepareResponse = ctx =>
+    {
+        const int durationInSeconds = 60 * 60 * 24;
+        ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+            "public,max-age=" + durationInSeconds;
+    }
+});
+
+app.Map($"/{frontEndRelativePath}", (IApplicationBuilder frontendApp) => 
+{
+    frontendApp.UseSpa(spa => { spa.Options.SourcePath = "./app/www/"; });
+});
+
+
+
+app.UseSpa(conf =>
+{
+    conf.Options.SourcePath = frontEndRelativePath;
+});
+
 app.Run();
