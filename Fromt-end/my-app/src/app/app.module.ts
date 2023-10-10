@@ -7,7 +7,6 @@ import { DelPipUpComponent } from './components/del-pip-up/del-pip-up.component'
 import { EditPipUpComponent } from './components/edit-pip-up/edit-pip-up.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, NgForm } from '@angular/forms';
 
 
