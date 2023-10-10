@@ -6,6 +6,7 @@ import { CreatePopUpComponent } from './components/create-pop-up/create-pop-up.c
 import { DelPipUpComponent } from './components/del-pip-up/del-pip-up.component';
 import { BoxComponentComponent } from './components/box-component/box-component.component';
 import { EditPipUpComponent } from './components/edit-pip-up/edit-pip-up.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { EditPipUpComponent } from './components/edit-pip-up/edit-pip-up.compone
     BoxComponentComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
