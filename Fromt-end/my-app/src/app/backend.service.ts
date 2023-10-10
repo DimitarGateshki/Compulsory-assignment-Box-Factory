@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { environment } from "./enviroments";
+import { Injectable } from '@angular/core';
+import { environment } from './enviroments';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -11,32 +11,38 @@ export class BackendService {
   constructor(private http: HttpClient) {}
 
   gatAllBoxes(): Observable<any> {
-    const url = environment.backendapi + '/api/boxes' ;
+    const url = environment.backendapi + '/api/boxes';
     return this.http.get<any[]>(url);
   }
 
-  gatBoxByID( id: number): Observable<any> {
-    const url = environment.backendapi + 'mobilepos/'+ id;
+  gatBoxByID(id: number): Observable<any> {
+    const url = environment.backendapi + '/api/box/' + id;
     return this.http.get<any>(url);
   }
 
   removeBoxByID(id: number): Observable<any> {
-    const url = environment.backendapi + 'mobilepos/'+ id;
-    return this.http.get<any>(url);
+    const url = environment.backendapi + '/api/DeleteBox/' + id;
+    return this.http.delete<any>(url);
   }
 
-  editBoxByID(id: number): Observable<any> {
-    const url = environment.backendapi + 'mobilepos/'+ id;
-    return this.http.get<any>(url);
+  editBoxByID(id: number, name: string, category: string): Observable<any> {
+    const url = environment.backendapi + '/api/UpdateBox/' + id;
+    return this.http.put<any>(url, {
+      BoxName: name,
+      BoxCategory: category,
+    });
   }
 
-  getBoxesByCategory(category: string): Observable<any> {
-    const url = environment.backendapi + 'mobilepos/'+ category;
-    return this.http.get<any>(url);
+  createBox(name: string,  category: string): Observable<any> {
+    const url = environment.backendapi + '/api/NewBox"';
+    return this.http.post<any>(url, {
+      BoxName: name,
+      BoxCategory: category,
+    });
+   
   }
 
-  createBox(name: number, category: string): Observable<any> {
-    const url = environment.backendapi + 'mobilepos/loyalty/activateclubproduct';
-    return this.http.post<any>(url, {name: name, category: category});
+
+
   }
 }
