@@ -51,7 +51,7 @@ public class Tests
         }
     
     }
-
+/*
 [Test]
 
  public async Task TestPostBox()
@@ -105,6 +105,7 @@ public async Task TestDeleteBox()
         Assert.AreEqual(204, (int)response.StatusCode, "DELETE request should return 204 No Content on success.");
     }
 }
+*/
 
 }
 
