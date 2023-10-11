@@ -1,0 +1,77 @@
+.pop-up {
+  width: 860px;
+  height: 250px;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.title {
+  color: #020202;
+  text-align: center;
+  font-family: Inter;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  justify-content: center;
+  align-items: center;
+  gap: 55px;
+}
+
+
+
+.add {
+  width: 290px;
+  height: 79px;
+  background-color: #ff6969;
+  color: #f2f2f2;
+  text-align: center;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border-radius: 20px;
+  padding: 20px 0 0 0;
+}
+
+.cancel {
+  width: 290px;
+  height: 79px;
+  background-color: #c70039;
+  color: #f2f2f2;
+  text-align: center;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border-radius: 20px;
+  padding: 20px 0 0 0;
+
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20%;
+}
+
+.pop-up-create{
+  margin-top: -100%;
+  padding-top: 40%;
+  margin-left: -7%;
+  position: absolute;
+  width: 110%;
+  height: 200%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}

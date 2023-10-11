@@ -1,0 +1,15 @@
+<div class="pop-up">
+  <p class="title">Add new box</p>
+  <input type="text" id="name" pInputText placeholder="Box name" [(ngModel)]="name" />
+
+
+  <p>Is this boxe sold</p>
+<input type="checkbox" id="for-sale"   [(ngModel)]="categoryCheck">
+
+
+  <div class="buttons">
+  <div class="add" (click)="setInput()">Add</div>
+  <div class="cancel" (click)="closeCreate()">Cancel</div>
+</div>
+</div>
+
