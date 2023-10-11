@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '18'
       - name: Install Angular program dependencies, Angular global CLI + ng build
-        run: cd ./Fromt-end/my-app && npm i -g @angular/cli && npm i && ng build -c="main"
+        run: cd ./Fromt-end/my-app && npm i -g @angular/cli@latest && npm i && ng build -configuration "main"
 
       - name: Build test code and install playwright test browser
         run: cd ./BackEnd/FullBackEndTestProject/Test && dotnet build && pwsh bin/Debug/net8.0/playwright.ps1 install --with-deps
