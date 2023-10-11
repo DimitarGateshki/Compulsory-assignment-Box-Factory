@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { BackendService } from 'src/app/backend.service';
 
 @Component({
-  selector: 'app-edit-pip-up',
-  templateUrl: './edit-pip-up.component.html',
-  styleUrls: ['./edit-pip-up.component.css']
+  selector: 'app-edit-pop-up',
+  templateUrl: './edit-pop-up.component.html',
+  styleUrls: ['./edit-pop-up.component.css']
 })
-export class EditPipUpComponent {
+export class EditPopUpComponent {
   name: string="";
   categoryCheck:boolean=false;
   category: string="";

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DelPipUpComponent } from './del-pip-up.component';
+import { DelPopUpComponent } from './del-pop-up.component';
 
 describe('DelPipUpComponent', () => {
-  let component: DelPipUpComponent;
-  let fixture: ComponentFixture<DelPipUpComponent>;
+  let component: DelPopUpComponent;
+  let fixture: ComponentFixture<DelPopUpComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DelPipUpComponent ]
+      declarations: [ DelPopUpComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DelPipUpComponent);
+    fixture = TestBed.createComponent(DelPopUpComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

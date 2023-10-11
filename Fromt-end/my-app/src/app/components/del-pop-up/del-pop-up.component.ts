@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { BackendService } from 'src/app/backend.service';
 
 @Component({
-  selector: 'app-del-pip-up',
-  templateUrl: './del-pip-up.component.html',
-  styleUrls: ['./del-pip-up.component.css']
+  selector: 'app-del-pop-up',
+  templateUrl: './del-pop-up.component.html',
+  styleUrls: ['./del-pop-up.component.css']
 })
-export class DelPipUpComponent {
+export class DelPopUpComponent {
   id: number=Number(localStorage.getItem("id"));
 
 

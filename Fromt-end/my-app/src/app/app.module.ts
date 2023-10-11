@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CreatePopUpComponent } from './components/create-pop-up/create-pop-up.component';
-import { DelPipUpComponent } from './components/del-pip-up/del-pip-up.component';
-import { EditPipUpComponent } from './components/edit-pip-up/edit-pip-up.component';
+import { DelPopUpComponent } from './components/del-pop-up/del-pop-up.component';
+import { EditPopUpComponent } from './components/edit-pop-up/edit-pop-up.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, NgForm } from '@angular/forms';
@@ -14,8 +14,8 @@ import { FormsModule, NgForm } from '@angular/forms';
   declarations: [
     AppComponent,
     CreatePopUpComponent,
-    EditPipUpComponent,
-    DelPipUpComponent,
+    EditPopUpComponent,
+    DelPopUpComponent,
 
   ],
   imports: [
