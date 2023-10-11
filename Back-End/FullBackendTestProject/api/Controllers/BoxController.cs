@@ -80,7 +80,7 @@ public class BoxController : ControllerBase
 
     [HttpDelete]
     [ValidateModel]
-    [Route("/api/DeleteBox/{bookId}")] 
+    [Route("/api/DeleteBox/{boxId}")] 
     public ResponseDto  DeleteBook([FromRoute] int bookId)
     {
         _service.DeleteBox(bookId);

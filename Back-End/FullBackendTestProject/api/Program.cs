@@ -27,26 +27,37 @@ app.MapControllers();
 app.UseMiddleware<GlobalExceptionHandler>();
 //app.UseCors(c => c.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 
-app.UseSpaStaticFiles(new StaticFileOptions()
+// app.UseSpaStaticFiles(new StaticFileOptions()
+// {
+//     OnPrepareResponse = ctx =>
+//     {
+//         const int durationInSeconds = 60 * 60 * 24;
+//         ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+//             "public,max-age=" + durationInSeconds;
+//     }
+// });
+
+// app.Map($"/{frontEndRelativePath}", (IApplicationBuilder frontendApp) => 
+// {
+//     frontendApp.UseSpa(spa => { spa.Options.SourcePath = "../Fromt-end/my-app/www"; });
+// });
+//
+//
+// app.UseSpa(conf =>
+// {
+//     conf.Options.SourcePath = frontEndRelativePath;
+// });
+
+app.UseCors(options =>
 {
-    OnPrepareResponse = ctx =>
-    {
-        const int durationInSeconds = 60 * 60 * 24;
-        ctx.Context.Response.Headers[HeaderNames.CacheControl] =
-            "public,max-age=" + durationInSeconds;
-    }
+    options.SetIsOriginAllowed(origin => true)
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials();
 });
+app.UseSpaStaticFiles();
 
-app.Map($"/{frontEndRelativePath}", (IApplicationBuilder frontendApp) => 
-{
-    frontendApp.UseSpa(spa => { spa.Options.SourcePath = "./app/www/"; });
-});
-
-
-
-app.UseSpa(conf =>
-{
-    conf.Options.SourcePath = frontEndRelativePath;
-});
+app.UseSpa(conf => { conf.Options.SourcePath = frontEndRelativePath; });
+app.MapControllers();
 
 app.Run();
