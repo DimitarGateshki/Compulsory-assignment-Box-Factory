@@ -9,10 +9,18 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent {
 
-  boxes: any[]=[];
+  boxes: any[]=[
+    {name:'test'},
+    {name:'test1'},
+    {name:'test2'},
+    {name:'albert'},
+
+  ];
   delToken: boolean =false;
   editToken: boolean =false;
   title = 'my-app';
+
+  searchText='';
 
   createToken: boolean =false;
 
@@ -31,7 +39,7 @@ export class AppComponent {
     })
 
   }
-  showCreate(){ 
+  showCreate(){
 
     this.createToken=true;
 
@@ -71,7 +79,7 @@ export class AppComponent {
           this.boxes=data.responseData;
           console.log(data);
         })
-  
+
         }
 
     }else if(type==1){
@@ -111,4 +119,14 @@ export class AppComponent {
     console.log(this.boxes)
   }
 
+  search(){
+   this.boxes= this.boxes.filter(e=>e.name.includes(this.searchText));
+    console.log(this.searchText);
+  if(this.searchText==""){
+    this.backendService.gatAllBoxes().subscribe(data =>{
+      this.boxes=data.responseData;
+      console.log(data);
+    })
+  }
+  }
 }

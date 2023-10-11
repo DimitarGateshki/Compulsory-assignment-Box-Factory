@@ -50,7 +50,7 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin-left: -200%;
+  margin-left: -85%;
 }
 
 
@@ -73,7 +73,7 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin-left: -30%;
+  margin-left: -50%;
 }
 .cats {
   margin: 60px 0 0 -5%;
@@ -193,4 +193,9 @@ body {
 
 .selected-cat{
   background-color: #141e46; color: #F2F2F2;
+}
+
+
+#search{
+  width: 300px;
 }

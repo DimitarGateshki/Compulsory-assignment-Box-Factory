@@ -7,6 +7,9 @@
   <div class="fields">
 
     <div class="search-box">
+      <div class="button">
+        <input class="sort-button" id="search" (input)="search()" [(ngModel)]="searchText" type="text" placeholder="Search">
+      </div>
     </div>
     <div class="sort">
       <div class="button">

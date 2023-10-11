@@ -30,7 +30,7 @@ export class EditPipUpComponent {
 
 
 
-    //this.closeEdit();
+    this.closeEdit();
 
   }else{
     this.name='Incorrect name';
