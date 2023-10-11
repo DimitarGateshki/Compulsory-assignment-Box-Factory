@@ -4,6 +4,7 @@ namespace infrastructure;
 
 public static class Utilities
 {
+    
     public static readonly Uri Uri;
     public static readonly string ProperlyFormattedConnectionString;
 
