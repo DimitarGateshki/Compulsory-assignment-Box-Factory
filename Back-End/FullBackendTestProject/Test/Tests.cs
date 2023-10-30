@@ -52,7 +52,7 @@ public class Tests
         }
     
     }
-/*
+
 [Test]
 
  public async Task TestPostBox()
@@ -88,7 +88,7 @@ public async Task TestDeleteBox()
 {
     using (HttpClient client = new HttpClient())
     {
-        int boxIdToDelete = 23; 
+        int boxIdToDelete = 26; 
 
         HttpResponseMessage response = await client.DeleteAsync($"{ContextConfig.ApiBaseUrl}/DeleteBox/{boxIdToDelete}");
 
@@ -106,7 +106,7 @@ public async Task TestDeleteBox()
         Assert.AreEqual(200, (int)response.StatusCode, "DELETE request should return 204 No Content on success.");
     }
 }
-*/
+
 
 }
 
