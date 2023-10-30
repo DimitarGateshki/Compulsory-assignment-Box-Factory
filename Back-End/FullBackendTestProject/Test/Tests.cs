@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Test;
 
 
+
 namespace Test;
 
 
@@ -35,8 +36,8 @@ public class Tests
     {
         using (HttpClient client = new HttpClient())
         {
-            int boxId = 12;
-            HttpResponseMessage response = await client.GetAsync($"{ContextConfig.ApiBaseUrl}/box/{boxId}");
+            int boxId = 26;
+            HttpResponseMessage response = await client.GetAsync($"{ContextConfig.ClientAppBaseUrl}/box/{boxId}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -62,7 +63,7 @@ public class Tests
         {
             BoxName = "TestBoxTest",
             DateOfCreation = DateTime.Now,
-            Category = "sold"
+            BoxCategory = "sold"
         };
 
         HttpResponseMessage response = await client.PostAsJsonAsync($"{ContextConfig.ApiBaseUrl}/NewBox", boxData);
@@ -87,9 +88,9 @@ public async Task TestDeleteBox()
 {
     using (HttpClient client = new HttpClient())
     {
-        int boxIdToDelete = 12; 
+        int boxIdToDelete = 23; 
 
-        HttpResponseMessage response = await client.DeleteAsync($"{ContextConfig.ClientAppBaseUrl}/DeleteBox/{boxIdToDelete}");
+        HttpResponseMessage response = await client.DeleteAsync($"{ContextConfig.ApiBaseUrl}/DeleteBox/{boxIdToDelete}");
 
         if (response.IsSuccessStatusCode)
         {
@@ -102,7 +103,7 @@ public async Task TestDeleteBox()
             Console.WriteLine($"Response content: {responseContent}");
         }
 
-        Assert.AreEqual(204, (int)response.StatusCode, "DELETE request should return 204 No Content on success.");
+        Assert.AreEqual(200, (int)response.StatusCode, "DELETE request should return 204 No Content on success.");
     }
 }
 */

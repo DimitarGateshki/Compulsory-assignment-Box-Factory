@@ -11,7 +11,7 @@ public class CreateBoxRequestDto
     [Required , NotNull]
     public DateTime DateOfCreation { get; set; }
     
-    [Required, MinLength(3), MaxLength(50)]
+    [Required, MinLength(2), MaxLength(50)]
     public string BoxCategory { get; set; }
     
 }
