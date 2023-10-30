@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 
 
 
+
 var frontEndRelativePath = "../../../Fromt-end/my-app/www";
 
 builder.Services.AddSpaStaticFiles(
@@ -25,28 +26,31 @@ app.UseSwagger();
 app.UseSwaggerUI();
 app.MapControllers();
 app.UseMiddleware<GlobalExceptionHandler>();
-//app.UseCors(c => c.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 
-// app.UseSpaStaticFiles(new StaticFileOptions()
-// {
-//     OnPrepareResponse = ctx =>
-//     {
-//         const int durationInSeconds = 60 * 60 * 24;
-//         ctx.Context.Response.Headers[HeaderNames.CacheControl] =
-//             "public,max-age=" + durationInSeconds;
-//     }
-// });
+app.UseCors(c => c.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 
-// app.Map($"/{frontEndRelativePath}", (IApplicationBuilder frontendApp) => 
-// {
-//     frontendApp.UseSpa(spa => { spa.Options.SourcePath = "../Fromt-end/my-app/www"; });
-// });
-//
-//
-// app.UseSpa(conf =>
-// {
-//     conf.Options.SourcePath = frontEndRelativePath;
-// });
+app.UseSpaStaticFiles(new StaticFileOptions()
+ {
+     OnPrepareResponse = ctx =>
+     {
+        const int durationInSeconds = 60 * 60 * 24;
+        ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+            "public,max-age=" + durationInSeconds;
+    }
+});
+
+app.Map($"/{frontEndRelativePath}", (IApplicationBuilder frontendApp) => 
+{
+    frontendApp.UseSpa(spa => { spa.Options.SourcePath = "../../../Fromt-end/my-app/www"; });
+});
+
+
+app.UseSpa(conf =>
+{
+    conf.Options.SourcePath = frontEndRelativePath;
+});
+
+
 
 app.UseCors(options =>
 {

@@ -81,9 +81,9 @@ public class BoxController : ControllerBase
     [HttpDelete]
     [ValidateModel]
     [Route("/api/DeleteBox/{boxId}")] 
-    public ResponseDto  DeleteBook([FromRoute] int bookId)
+    public ResponseDto  DeleteBox([FromRoute] int boxId)
     {
-        _service.DeleteBox(bookId);
+        _service.DeleteBox(boxId);
         return new ResponseDto()
         {
             MessageToClient = "Successfully deleted the box",
