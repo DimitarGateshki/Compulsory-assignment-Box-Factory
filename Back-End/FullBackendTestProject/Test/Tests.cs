@@ -88,7 +88,7 @@ public async Task TestDeleteBox()
 {
     using (HttpClient client = new HttpClient())
     {
-        int boxIdToDelete = 23; 
+        int boxIdToDelete = ; 
 
         HttpResponseMessage response = await client.DeleteAsync($"{ContextConfig.ApiBaseUrl}/DeleteBox/{boxIdToDelete}");
 
