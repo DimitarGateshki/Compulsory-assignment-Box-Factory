@@ -84,6 +84,7 @@ public class BoxController : ControllerBase
     public ResponseDto  DeleteBox([FromRoute] int boxId)
     {
         _service.DeleteBox(boxId);
+        
         return new ResponseDto()
         {
             MessageToClient = "Successfully deleted the box",

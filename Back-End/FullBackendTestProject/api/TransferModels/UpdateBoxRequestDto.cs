@@ -12,7 +12,9 @@ public class UpdateBoxRequestDto
     
     public DateTime DateOfCreation { get; set; }
     
-    [Required, MinLength(3), MaxLength(50)]
+    [NotNull]
+    [Required(ErrorMessage = "Must Be")]
+    [RegularExpression("^(sold|not sold)$")]
     public string BoxCategory { get; set; }
 
 }
