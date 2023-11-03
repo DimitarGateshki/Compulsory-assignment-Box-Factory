@@ -136,37 +136,6 @@ public class Tests
     }
 }
 
-<<<<<<< HEAD
-=======
-[Test]
-public async Task TestDeleteBox()
-{
-    using (HttpClient client = new HttpClient())
-    {
-
-        int boxIdToDelete = 19; 
-
-        HttpResponseMessage response = await client.DeleteAsync($"{ContextConfig.ApiBaseUrl}/DeleteBox/{boxIdToDelete}");
-
-        if (response.IsSuccessStatusCode)
-        {
-            Console.WriteLine($"DELETE request for Box ID {boxIdToDelete} was successful.");
-        }
-        else
-        {
-            Console.WriteLine($"DELETE request failed with status code: {response.StatusCode}");
-            string responseContent = await response.Content.ReadAsStringAsync();
-            Console.WriteLine($"Response content: {responseContent}");
-        }
-
-        Assert.AreEqual(200, (int)response.StatusCode, "DELETE request should return 204 No Content on success.");
-    }
-}
-
-
-}
-
->>>>>>> 87b61e25abe42d2a7b6f1354bb452f8ef73ad290
     
     
     
