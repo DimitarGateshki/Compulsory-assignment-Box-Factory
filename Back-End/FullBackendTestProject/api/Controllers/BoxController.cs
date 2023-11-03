@@ -26,7 +26,7 @@ public class BoxController : ControllerBase
 
         return new ResponseDto()
         {
-            MessageToClient = "Here are all the books!",
+            MessageToClient = "Here are all the boxes!",
             ResponseData = _service.GetAllBoxes(),
         };
         

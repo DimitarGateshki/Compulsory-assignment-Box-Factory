@@ -15,7 +15,7 @@ public class Repository
 
     public IEnumerable<Box> GetAllBoxes()
     {
-        var sql = $@"select * from public.boxes;";
+        var sql = $@"select * from test_schema.boxes;";
         using(var conn = _dataSource.OpenConnection())
         {
             return conn.Query<Box>(sql);
@@ -24,7 +24,7 @@ public class Repository
 
     public Box GetBoxByID(int id)
     {
-        var sql = $@"select * from public.boxes where id=@id;";
+        var sql = $@"select * from test_schema.boxes where id=@id;";
 
         using (var conn = _dataSource.OpenConnection())
         {
@@ -34,7 +34,7 @@ public class Repository
     public IEnumerable<SearchBoxItem> SearchBoxes(string searchTerm, int pageSize)
     {
         var sql = @"SELECT id as BoxId, name as BoxName, category as BoxCategory
-                FROM public.boxes
+                FROM test_schema.boxes
                 WHERE LOWER(name) LIKE @searchTerm
                 LIMIT @pageSize;";
 
@@ -47,7 +47,7 @@ public class Repository
 
     public Box CreateBox(string name, DateTime date, string category)
     {
-        var sql = @"INSERT INTO public.boxes (name, date_of_creation, category)
+        var sql = @"INSERT INTO test_schema.boxes (name, date_of_creation, category)
                 VALUES (@name, @date, @category)
                 RETURNING *";
 
@@ -61,7 +61,7 @@ public class Repository
 
     public Box UpdateBox(int boxId, string name, DateTime date, string category)
     {
-        var sql = @"UPDATE public.boxes SET name = @name, date_of_creation = @date,
+        var sql = @"UPDATE test_schema.boxes SET name = @name, date_of_creation = @date,
                         category = @category WHERE id = @boxId;";
 
         using (var conn = _dataSource.OpenConnection())
@@ -72,7 +72,7 @@ public class Repository
 
     public bool DeleteBox(int boxId)
     {
-        var sql = @"delete from public.boxes where id = @boxId";
+        var sql = @"delete from test_schema.boxes where id = @boxId";
         using (var conn = _dataSource.OpenConnection())
         {
             return conn.Execute(sql, new { boxId }) == 1;
