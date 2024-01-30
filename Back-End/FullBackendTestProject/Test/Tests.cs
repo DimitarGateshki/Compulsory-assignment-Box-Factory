@@ -52,7 +52,6 @@ public class Tests
             {
                 Assert.Fail($"API request failed with status code: {response.StatusCode}");
             }
-
         }
 
     }

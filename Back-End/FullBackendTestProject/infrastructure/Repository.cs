@@ -70,14 +70,7 @@ public class Repository
         }
     }
 
-    public bool DeleteBox(int boxId)
-    {
-        var sql = @"delete from test_schema.boxes where id = @boxId";
-        using (var conn = _dataSource.OpenConnection())
-        {
-            return conn.Execute(sql, new { boxId }) == 1;
-        }
-    }
+    
 
 
 }

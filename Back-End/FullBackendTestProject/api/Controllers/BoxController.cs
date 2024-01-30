@@ -77,7 +77,7 @@ public class BoxController : ControllerBase
             ResponseData = _service.UpdateBox(dto.BoxID, dto.BoxName, dto.DateOfCreation, dto.BoxCategory),
         };
     }
-
+    /*
     [HttpDelete]
     [ValidateModel]
     [Route("/api/DeleteBox/{boxId}")] 
@@ -91,6 +91,7 @@ public class BoxController : ControllerBase
         };
 
     }
+    */
 }
 
 

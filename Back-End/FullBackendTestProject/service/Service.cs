@@ -57,7 +57,7 @@ public class Service
     {
         return _repository.UpdateBox(id ,name, date, category);
     }
-
+    /*
     public void DeleteBox(int boxId)
     {
         var result = _repository.DeleteBox(boxId);
@@ -67,5 +67,6 @@ public class Service
         }
         
     }
+    */
 
 }

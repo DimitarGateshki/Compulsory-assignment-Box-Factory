@@ -33,7 +33,8 @@ public static class Utilities
         }
         catch (Exception e)
         {
-            throw new Exception("Your connection cannot be found or used. Are you sure you are using PosgradeSQl", e);
+            throw new Exception("Your connection cannot be found or used. " +
+                                "Are you sure you are using PosgradeSQl", e);
         }
     }
 
